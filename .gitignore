@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+_site/
+report*.json
+# never commit real emails you analysed
+/emails/
+/private/

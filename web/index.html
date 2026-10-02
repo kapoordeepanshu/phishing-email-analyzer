@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phishing Email Analyzer – Free &amp; Private Phishing Email Checker</title>
+  <meta name="description" content="Free, private phishing email analyzer. Check if an email is phishing: SPF/DKIM/DMARC, spoofed senders, lookalike domains, malicious links and dangerous attachments - analysed 100% in your browser, nothing uploaded.">
+  <meta name="keywords" content="phishing email analyzer, phishing checker, check if email is phishing, email header analyzer, SPF DKIM DMARC checker, malicious link checker, eml analyzer, email attachment scanner">
+  <meta name="author" content="Deepanshu Kapoor">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="canonical" href="https://kapoordeepanshu.github.io/phishing-email-analyzer/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Phishing Email Analyzer">
+  <meta property="og:title" content="Phishing Email Analyzer – Free &amp; Private Phishing Email Checker">
+  <meta property="og:description" content="Drop a suspicious email and see if it's phishing. Sender, links and attachments analysed in your browser - nothing uploaded.">
+  <meta property="og:url" content="https://kapoordeepanshu.github.io/phishing-email-analyzer/">
+  <meta property="og:image" content="https://kapoordeepanshu.github.io/phishing-email-analyzer/social-preview.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Phishing Email Analyzer – Free &amp; Private">
+  <meta name="twitter:description" content="Check if an email is phishing: SPF/DKIM/DMARC, lookalike domains, malicious links and attachments. Runs in your browser.">
+  <meta name="twitter:image" content="https://kapoordeepanshu.github.io/phishing-email-analyzer/social-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Phishing Email Analyzer",
+    "url": "https://kapoordeepanshu.github.io/phishing-email-analyzer/",
+    "description": "Free, open-source phishing email analyzer that checks sender authentication, malicious links and dangerous attachments entirely in the browser.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Any (web browser)",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Deepanshu Kapoor", "url": "https://github.com/kapoordeepanshu" },
+    "license": "https://opensource.org/licenses/MIT",
+    "codeRepository": "https://github.com/kapoordeepanshu/phishing-email-analyzer"
+  }
+  </script>
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; connect-src 'self' https://cdn.jsdelivr.net; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 4 7v8c0 7.5 5.1 13.4 12 15 6.9-1.6 12-7.5 12-15V7z' fill='%232563eb'/%3E%3Cpath d='M9 12h14v9H9z' fill='%23fff'/%3E%3Cpath d='m9 12 7 5 7-5' fill='none' stroke='%232563eb' stroke-width='1.6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 7v8c0 7.5 5.1 13.4 12 15 6.9-1.6 12-7.5 12-15V7z"/><path class="env" d="M9 12h14v9H9z"/><path class="flap" d="m9 12 7 5 7-5"/></svg>
+        <span>Phishing Email Analyzer</span>
+      </div>
+      <nav>
+        <a href="#how">How it works</a>
+        <a id="repo-link" href="https://github.com/kapoordeepanshu/phishing-email-analyzer" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Is this email a phishing attempt?</h1>
+      <p class="lede">Drop a suspicious email to check its sender, links and attachments.
+        <strong>Everything runs in your browser.</strong> The email is never uploaded anywhere.</p>
+    </section>
+
+    <section class="input-card" aria-label="Email input">
+      <div id="drop" class="drop" tabindex="0" role="button" aria-describedby="drop-hint">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+        <p><strong>Drop an .eml file here</strong> or click to choose</p>
+        <p id="drop-hint" class="muted small">Need the file? See <a href="#export">how to export an email</a>.</p>
+        <input id="file" type="file" accept=".eml,message/rfc822,.txt" hidden>
+      </div>
+      <details class="paste">
+        <summary>…or paste the raw message source</summary>
+        <textarea id="raw" spellcheck="false" placeholder="Received: from …&#10;From: …&#10;Subject: …"></textarea>
+        <button id="analyze-raw" class="btn">Analyze pasted source</button>
+      </details>
+      <div class="samples">
+        <span class="muted small">Try a sample:</span>
+        <button class="chip" data-sample="phishing_paypal.eml">PayPal phish</button>
+        <button class="chip" data-sample="phishing_html_attachment.eml">HTML attachment lure</button>
+        <button class="chip" data-sample="legitimate_newsletter.eml">Legit newsletter</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">Loading the analysis engine…</p>
+    </section>
+
+    <section id="results" class="results" hidden aria-live="polite">
+      <div class="verdict-card">
+        <div class="gauge" id="gauge"><span id="score">0</span><small>/100</small></div>
+        <div class="verdict-text">
+          <p class="eyebrow">Verdict</p>
+          <h2 id="verdict">-</h2>
+          <p id="subject" class="muted subject"></p>
+          <div id="counts" class="counts"></div>
+        </div>
+        <div class="verdict-actions">
+          <button id="download" class="btn ghost">Download JSON</button>
+          <button id="reset" class="btn ghost">Analyze another</button>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="findings">Findings <span id="n-findings"></span></button>
+        <button role="tab" aria-selected="false" data-tab="sender">Sender</button>
+        <button role="tab" aria-selected="false" data-tab="links">Links <span id="n-links"></span></button>
+        <button role="tab" aria-selected="false" data-tab="attachments">Attachments <span id="n-atts"></span></button>
+      </div>
+      <div class="panel" id="panel-findings"></div>
+      <div class="panel" id="panel-sender" hidden></div>
+      <div class="panel" id="panel-links" hidden></div>
+      <div class="panel" id="panel-attachments" hidden></div>
+      <p class="muted small disclaimer">Heuristic analysis. A clean result does not guarantee an email is safe, and a
+        flagged one is not proof of malice. When in doubt, contact the sender through a channel you already trust.</p>
+    </section>
+
+    <section id="how" class="info">
+      <h2>What gets checked</h2>
+      <div class="grid">
+        <article><h3>Sender</h3><p>SPF, DKIM and DMARC results, spoofed display names, lookalike and homograph
+          domains, Reply-To and Return-Path mismatches, the relay path and the originating IP.</p></article>
+        <article><h3>Links</h3><p>Link text that shows a different site than the real target, raw-IP and
+          punycode URLs, brand impersonation, shorteners, free-hosting abuse, and hidden redirects. Safe Links and
+          URL Defense wrappers are unwrapped first.</p></article>
+        <article><h3>Attachments</h3><p>Executables and double extensions, files whose content doesn't match their
+          type, macros, remote templates, PDF JavaScript, HTML smuggling, and encrypted or nested archives. Files are
+          only read, never opened or run.</p></article>
+        <article><h3>Content</h3><p>Urgency and threat language, credential requests, payment and gift-card lures,
+          inline login forms, QR-code phishing hints, and zero-width-character filter evasion.</p></article>
+      </div>
+
+      <h2 id="export">How to export an email (.eml)</h2>
+      <ul class="export">
+        <li><strong>Gmail:</strong> open the message → ⋮ (More) → <em>Download message</em>.</li>
+        <li><strong>Outlook on the web / new Outlook:</strong> open the message → … → <em>Save as</em> or <em>Download</em> (.eml).</li>
+        <li><strong>Classic Outlook (desktop):</strong> saves <code>.msg</code>, which isn't supported. Open the message,
+          then File → Properties, copy the <em>Internet headers</em>, and paste them above (headers-only check),
+          or forward the mail as an attachment from Outlook on the web.</li>
+        <li><strong>Apple Mail:</strong> select the message → File → <em>Save As…</em> → Format: <em>Raw Message Source</em>.</li>
+        <li><strong>Thunderbird:</strong> select the message → File → <em>Save As</em> → File.</li>
+      </ul>
+      <p class="muted small">Prefer the command line? The same engine is available as a Python CLI with VirusTotal
+        lookups and JSON output. See the <a href="https://github.com/kapoordeepanshu/phishing-email-analyzer" rel="noopener">GitHub repository</a>.</p>
+    </section>
+  </main>
+
+  <footer class="wrap foot muted small">
+    <a href="https://github.com/kapoordeepanshu/phishing-email-analyzer" rel="noopener">Open source</a> · MIT licensed · No tracking, no uploads, no cookies · Made by <a href="https://github.com/kapoordeepanshu" rel="noopener">Deepanshu Kapoor</a>
+  </footer>
+
+  <!-- Pinned by hash: the browser refuses this file if the CDN copy is ever modified.
+       Verified against the official pyodide-core-0.27.2 GitHub release. -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js"
+          integrity="sha384-Dz8WbRJS+zEg3mTsQKFzS7uiJxTV6CVDI6lD5b49KMnhy6hlO1vl+ru6YCYNiaXz"
+          crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>

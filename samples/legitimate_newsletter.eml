@@ -1,0 +1,55 @@
+Received: from mail-out.example.com (mail-out.example.com [93.184.216.34]) by
+ mx.recipient.example; Wed, 30 Sep 2026 08:00:02 +0000
+Authentication-Results: mx.recipient.example; spf=pass
+ smtp.mailfrom=example.com; dkim=pass header.d=example.com; dmarc=pass
+ header.from=example.com
+DKIM-Signature:
+ v=1; a=rsa-sha256; d=example.com; s=mail; h=from:to:subject; bh=abc=; b=def=
+Return-Path: <bounces@example.com>
+From: "Example Weekly" <news@example.com>
+To: reader@recipient.example
+Subject: Your weekly product update
+Date: Wed, 30 Sep 2026 08:00:00 +0000
+Message-ID: <weekly-2026-40@example.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============3541134693050289120=="
+
+--===============3541134693050289120==
+Content-Type: multipart/alternative;
+ boundary="===============7503849134881302943=="
+
+--===============7503849134881302943==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Hi Alex,
+
+Here is what changed this week: https://www.example.com/changelog
+
+Unsubscribe: https://www.example.com/unsubscribe
+
+--===============7503849134881302943==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi Alex,</p>
+<p>Here is <a href=3D"https://www.example.com/changelog">what changed this we=
+ek</a>.</p>
+<p><a href=3D"https://www.example.com/unsubscribe">www.example.com/unsubscrib=
+e</a></p></body></html>
+
+--===============7503849134881302943==--
+
+--===============3541134693050289120==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="release-notes.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iaiA8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4gZW5kb2Jq
+CjIgMCBvYmogPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4gZW5kb2Jq
+CjMgMCBvYmogPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiA+PiBlbmRvYmoKdHJhaWxlciA8
+PCAvUm9vdCAxIDAgUiA+PgolJUVPRgo=
+
+--===============3541134693050289120==--

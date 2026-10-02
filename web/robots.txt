@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kapoordeepanshu.github.io/phishing-email-analyzer/sitemap.xml
